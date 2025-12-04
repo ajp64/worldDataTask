@@ -40,7 +40,18 @@ Added a UI using Thymeleaf, that displays the data as a table in the browsers, w
 
 ### Notes:
  - Currently keeping everything in a monorepo. This should make it easier to deploy, however a microservice structure could be more clean / decoupled.
- - Presentation is very basic - UI could be much cleaner and appealing 
+ - Presentation is very basic - UI could be much cleaner and appealing
+
+### 4:
+Improved UI, by adding a button to download the CSV. Added a dockerfile, created an image and uploaded it to my dockerhub (ajp64/epi-task). Added more tests for repo methods. 
+
+### Current progress:
+ - App can be run in docker, by building the image and accessing the UI on http:localhost:8080/countryData. 
+
+### Notes:
+ - Testing ideally should be much more robust, i.e. integration testing.
+ - Need to add bar graph to UI.
+ - Filters in the UI should be relaxed, currently need exact matches by case to properly filter. 
 
 
 
