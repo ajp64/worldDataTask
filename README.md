@@ -32,7 +32,6 @@ On startup, CSV is cleaned and stored in database -> Answers to questions are pr
  - Currently just answering the questions by printing to the console, could present this better through a UI
  - Added a controller class, as I was considering the option of providing endpoints for accessing the DataAnalysis service class. This could be implemented later.
 
- - 
 ### 3:
 Added a UI using Thymeleaf, that displays the data as a table in the browsers, with fields to filter the data, and displays showing sums and averages of data from the selected set.
 
