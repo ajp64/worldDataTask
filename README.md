@@ -8,9 +8,9 @@ Researched effective ways to process CSV's in Spring, and used resources from Ba
  - Handling #NA values for Doubles by returning nulls
  - Mapping is set up to only store one row for each country, removing duplicates
 
-### Next steps:
+### Notes on current progress:
  - Some duplicate lines have different data, need to ensure all data for each country is returned
- - Some Double values are negative or 0. These should be handled as nulls, as the information does not appear reliable
+ - Some Double values are negative or 0. These should be handled as nulls (considered just setting all negatives as positives, but looking at the data it seems some negative values are incorrect)
 
 ### References
 https://opencsv.sourceforge.net/#general
@@ -18,6 +18,20 @@ https://opencsv.sourceforge.net/#general
 https://www.baeldung.com/opencsv
 <br>
 https://medium.com/@mohamedhedi.aissi/spring-boot-csv-service-using-opencsv-5afd5c66c125
+
+
+### 2:
+Added functionality to output a CSV with the cleaned data which is stored in the database. Created the DataAnalysis service and repository methods required for querying and answering the questions about the data. 
+Current App flow is:
+On startup, CSV is cleaned and stored in database -> Answers to questions are printed in the console -> cleaned CSV is output
+### Current progress:
+ - CSV is cleaned, stored in DB, and a new CSV is output from the cleaned data in the DB
+ - Repository and Service set up to answer provided questions about the dataset
+
+### Notes on current progress:
+ - Currently just answering the questions by printing to the console, could present this better through a UI
+ - Added a controller class, as I was considering the option of providing endpoints for accessing the DataAnalysis service class. This could be implemented later. 
+
 
 
 
