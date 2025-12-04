@@ -8,7 +8,7 @@ Researched effective ways to process CSV's in Spring, and used resources from Ba
  - Handling #NA values for Doubles by returning nulls
  - Mapping is set up to only store one row for each country, removing duplicates
 
-### Notes on current progress:
+### Notes:
  - Some duplicate lines have different data, need to ensure all data for each country is returned
  - Some Double values are negative or 0. These should be handled as nulls (considered just setting all negatives as positives, but looking at the data it seems some negative values are incorrect)
 
@@ -28,9 +28,19 @@ On startup, CSV is cleaned and stored in database -> Answers to questions are pr
  - CSV is cleaned, stored in DB, and a new CSV is output from the cleaned data in the DB
  - Repository and Service set up to answer provided questions about the dataset
 
-### Notes on current progress:
+### Notes:
  - Currently just answering the questions by printing to the console, could present this better through a UI
- - Added a controller class, as I was considering the option of providing endpoints for accessing the DataAnalysis service class. This could be implemented later. 
+ - Added a controller class, as I was considering the option of providing endpoints for accessing the DataAnalysis service class. This could be implemented later.
+
+### 3:
+Added a UI using Thymeleaf, that displays the data as a table in the browsers, with fields to filter the data, and displays showing sums and averages of data from the selected set.
+
+### Current progress:
+ - UI can be accessed using the /countryData endpoint, which allows the user to filter and view sums/averages
+
+### Notes:
+ - Currently keeping everything in a monorepo. This should make it easier to deploy, however a microservice structure could be more clean / decoupled.
+ - Presentation is very basic - UI could be much cleaner and appealing 
 
 
 
