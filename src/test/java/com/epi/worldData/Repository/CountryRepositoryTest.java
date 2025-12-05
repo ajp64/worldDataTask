@@ -121,4 +121,12 @@ public class CountryRepositoryTest {
 
         assertEquals(actual , result);
     }
+
+    @Test
+    void testSumPopulationByRegion() {
+        Double result = testSubject.sumPopulationByRegion("Asia");
+        Double actual = testCountry1.getPopulation() + testCountry2.getPopulation();
+
+        assertEquals(actual , result);
+    }
 }

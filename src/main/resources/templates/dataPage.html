@@ -1,4 +1,4 @@
-<form th:action="@{/countryData}" method="get" xmlns:th="http://www.w3.org/1999/xhtml">
+<form th:action="@{/}" method="get" xmlns:th="http://www.w3.org/1999/xhtml">
     <input type="text" name="region"     th:value="${param.region}"     placeholder="Filter by region"/>
     <input type="text" name="continent"  th:value="${param.continent}"  placeholder="Filter by continent"/>
     <input type="text" name="subregion"  th:value="${param.subregion}"  placeholder="Filter by subcontinent"/>
@@ -20,6 +20,7 @@
     <td th:text="${#numbers.formatDecimal(popSum, 0, 'COMMA', 0, 'POINT')}">0</td>
 </tr>
 <br>
+<br>
 <tr>
     <span> Average values: </span>
     <td>Average Life Expectancy (Years):</td>
@@ -27,6 +28,12 @@
     <td>Average GDP per Capita:</td>
     <td th:text="${gdpAv == null ? '' : '$' + #numbers.formatDecimal(gdpAv,0,'COMMA',0,'POINT')}">0</td>
 </tr>
+<br>
+<br>
+<a th:href="@{/popDensity}" method="get">
+    <button type="submit" class="btn btn-primary">View graph of population density by region</button>
+</a>
+<br>
 </thead>
 
 <table>

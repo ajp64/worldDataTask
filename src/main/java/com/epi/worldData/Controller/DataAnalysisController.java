@@ -15,9 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.DoubleSummaryStatistics;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -32,8 +30,8 @@ public class DataAnalysisController {
 
     public DataAnalysisController(DataAnalysisService dataAnalysisService) {this.dataAnalysisService = dataAnalysisService;}
 
-    @GetMapping(value = "/countryData")
-    public String countryData(
+    @GetMapping(value = "/")
+    public String index(
             Model model,
             @RequestParam(required = false) String region,
             @RequestParam(required = false) String continent,
@@ -79,6 +77,15 @@ public class DataAnalysisController {
                 .header("Content-Disposition", "attachment; filename=output.csv")
                 .contentType(MediaType.parseMediaType("text/csv"))
                 .body(resource);
+    }
+
+    @GetMapping(value = "/popDensity")
+    public String popDensity(Model model) {
+        Map<String, Double> regionPopDensity = dataAnalysisService.findAveragePopDensityByRegion();
+
+        model.addAttribute("chartData", regionPopDensity);
+
+        return "popDensityGraph";
     }
 
     private <T> double sumDouble(List<T> list, Function<T, Double> getter) {

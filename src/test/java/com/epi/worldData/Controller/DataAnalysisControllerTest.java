@@ -55,7 +55,7 @@ public class DataAnalysisControllerTest {
 
     @Test
     void testNoFiltersReturnsAllData() throws Exception {
-        mockMvc.perform(get("/countryData"))
+        mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("dataPage"))
                 .andExpect(model().attribute("dataPage", hasSize(2)))
@@ -67,7 +67,7 @@ public class DataAnalysisControllerTest {
 
     @Test
     void testFilterByRegion() throws Exception {
-        mockMvc.perform(get("/countryData")
+        mockMvc.perform(get("/")
                         .param("region", "Europe"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("dataPage"))
@@ -80,7 +80,7 @@ public class DataAnalysisControllerTest {
 
     @Test
     void testMultipleFilters() throws Exception {
-        mockMvc.perform(get("/countryData")
+        mockMvc.perform(get("/")
                         .param("continent", "Asia")
                         .param("type", "Sovereign country"))
                 .andExpect(status().isOk())

@@ -33,4 +33,7 @@ public interface CountryRepository extends JpaRepository<CountryData, String> {
     Double countBySubregion(String subregion);
     @Query(value = "SELECT SUM(gdp_per_cap) FROM COUNTRY_DATA WHERE subregion = ?1", nativeQuery = true)
     Double sumGdppercapBySubregion(String subregion);
+
+    @Query(value = "SELECT SUM(population) FROM COUNTRY_DATA WHERE region = ?1", nativeQuery = true)
+    Double sumPopulationByRegion(String region);
 }

@@ -1,0 +1,57 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<a th:href="@{/}" method="get">
+    <button type="submit" class="btn btn-primary">Return to Data Table</button>
+</a>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Graph of Population Density per Region</title>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+<div align="center" style="width: 1000px;">
+    <h2>Population Density by Region</h2>
+    <div id="chart_div"></div>
+</div>
+<script th:inline="javascript">
+    var real_data = /*[[${chartData}]]*/'noValue';
+    $(document).ready(function() {
+        google.charts.load('current', {
+            packages : [ 'corechart', 'bar' ]
+        });
+        google.charts.setOnLoadCallback(drawColumnChart);
+    });
+    function drawColumnChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Region');
+        data.addColumn('number', 'Population by Km2');
+        Object.keys(real_data).forEach(function(key) {
+            data.addRow([ key, real_data[key] ]);
+        });
+
+        var formatter = new google.visualization.NumberFormat({
+          fractionDigits: 1
+        });
+        formatter.format(data, 1);
+
+        var options = {
+            height: 500,
+            hAxis : {
+                title : 'Regions',
+            },
+            vAxis : {
+                title : 'Population by Km2'
+            }
+        };
+        var chart = new google.visualization.ColumnChart(document
+                .getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+</body>
+</html>

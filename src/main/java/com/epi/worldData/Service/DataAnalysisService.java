@@ -66,6 +66,21 @@ public class DataAnalysisService {
                 .orElse("No value found");
     }
 
+    public Map<String, Double> findAveragePopDensityByRegion() {
+        Map<String, Double> regionPopDensity = new HashMap<>();
+        List<String> allRegions = repository.findDistinctByRegion();
+        allRegions.forEach(region -> {
+            Double regionArea = repository.sumAreaByRegion(region);
+            Double regionPop = repository.sumPopulationByRegion(region);
+            if (regionPop != null && regionArea != null) {
+                Double popDensity = regionPop / regionArea;
+                regionPopDensity.put(region, popDensity);
+            }
+        });
+
+        return regionPopDensity;
+    }
+
     // This method creates a map of Subregion to Average GDP per capita, and is called in the two above methods
     // to return the highest and lowest Subregion by gdp per capita.
     private Map<String, Double> createMapOfSubregionToAvGdpPerCap() {
