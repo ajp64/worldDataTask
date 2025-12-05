@@ -13,7 +13,7 @@ in the service layer to answer the specified questions about the data.
  */
 
 @Repository
-public interface CountryRepository extends JpaRepository<CountryData, String> {
+public interface CountryRepository extends JpaRepository<CountryData, Long> {
 
     @Query(
             value = "SELECT continent FROM COUNTRY_DATA GROUP BY continent ORDER BY COUNT(*) DESC LIMIT 1",

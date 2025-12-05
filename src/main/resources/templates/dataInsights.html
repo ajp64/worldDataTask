@@ -16,26 +16,26 @@
         <!-- Question 1 -->
         <div class="mb-3">
             <h5>Which continent has the most countries in the data?</h5>
-            <p class="text-muted" th:text="${mostCountries}">Answer 1 placeholder</p>
+            <p class="text-muted" th:text="${mostCountries}"></p>
         </div>
 
         <!-- Question 2 -->
         <div class="mb-3">
             <h5>Which region has the largest combined area in sq. km?</h5>
-            <p class="text-muted" th:text="${largestRegion}">Answer 2 placeholder</p>
+            <p class="text-muted" th:text="${largestRegion}"></p>
         </div>
 
         <!-- Question 3 -->
         <div class="mb-3">
             <h5>Which country has the highest life expectancy?</h5>
-            <p class="text-muted" th:text="${countryHighestLifeExp}">Answer 3 placeholder</p>
+            <p class="text-muted" th:text="${countryHighestLifeExp}"></p>
         </div>
 
         <!-- Question 4 -->
         <div class="mb-3">
             <h5>Which subregion has the lowest / highest average GDP per capita?</h5>
-            <p class="text-muted" th:text="${lowestGdpSubregion}">Lowest GDP per capita Subregion: </p>
-            <p class="text-muted" th:text="${highestGdpSubregion}">Answer 4 placeholder</p>
+            <p class="text-muted" th:text=" 'Lowest: ' + ${lowestGdpSubregion}"></p>
+            <p class="text-muted" th:text=" 'Highest: ' + ${highestGdpSubregion}"></p>
         </div>
 
     </div>

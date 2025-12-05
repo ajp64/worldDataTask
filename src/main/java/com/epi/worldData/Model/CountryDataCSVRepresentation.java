@@ -1,5 +1,6 @@
 package com.epi.worldData.Model;
 
+import com.epi.worldData.util.StringParser;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import com.epi.worldData.util.DoubleParser;
@@ -15,7 +16,7 @@ import lombok.*;
 @NoArgsConstructor
 public class CountryDataCSVRepresentation {
 
-    @CsvBindByName(column = "iso_a2")
+    @CsvCustomBindByName(column = "iso_a2", converter = StringParser.class)
     private String isoA2;
     @CsvBindByName(column = "name_long")
     private String name;

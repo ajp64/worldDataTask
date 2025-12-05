@@ -25,7 +25,7 @@ public class CountryRepositoryTest {
 
     @BeforeEach
     public void setUp() {
-        testCountry1 = new CountryData("MN",
+        testCountry1 = new CountryData(1L, "MN",
                 "Mongolia",
                 "Asia",
                 "Asia",
@@ -36,7 +36,7 @@ public class CountryRepositoryTest {
                 68.847,
                 11348.647);
 
-        testCountry2 = new CountryData("BD",
+        testCountry2 = new CountryData(2L, "BD",
                 "Bangladesh",
                 "Asia",
                 "Asia",
@@ -47,7 +47,7 @@ public class CountryRepositoryTest {
                 71.803,
                 2973.041565);
 
-        testCountry3 = new CountryData("PL",
+        testCountry3 = new CountryData(3L, "PL",
                 "Poland",
                 "Europe",
                 "Europe",

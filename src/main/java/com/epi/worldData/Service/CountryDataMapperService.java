@@ -22,7 +22,7 @@ public class CountryDataMapperService implements CSVMapper<CountryData, CountryD
                 .subregion(k.getSubregion())
                 .type(k.getType())
                 .areaKm2(k.getArea_km2())
-                .population(k.getPop())
+                .population(checkPop(Optional.ofNullable(k.getPop()).orElse(0.0)))
                 .lifeExpectancy(checkLifeExp(Optional.ofNullable(k.getLifeExp()).orElse(0.0)))
                 .gdpPerCap(k.getGdpPerCap())
                 .build();
@@ -38,7 +38,7 @@ public class CountryDataMapperService implements CSVMapper<CountryData, CountryD
                 .subregion(t.getSubregion())
                 .type(t.getType())
                 .area_km2(t.getAreaKm2())
-                .pop(t.getPopulation())
+                .pop(checkPop(t.getPopulation()))
                 .lifeExp(checkLifeExp(t.getLifeExpectancy()))
                 .gdpPerCap(t.getGdpPerCap())
                 .build();
@@ -50,5 +50,13 @@ public class CountryDataMapperService implements CSVMapper<CountryData, CountryD
         }
 
         return lifeExp;
+    }
+
+    private Double checkPop(Double pop) {
+        if (pop > 2000000000 || pop < 400) {
+            return null;
+        }
+
+        return pop;
     }
 }

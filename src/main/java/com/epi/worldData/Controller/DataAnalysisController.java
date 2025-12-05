@@ -44,7 +44,7 @@ public class DataAnalysisController {
                         .filter(p -> region == null || p.getRegion().toLowerCase().contains(region.toLowerCase()))
                         .filter(p -> continent == null || p.getContinent().toLowerCase().contains(continent.toLowerCase()))
                         .filter(p -> subregion == null || p.getSubregion().toLowerCase().contains(subregion.toLowerCase()))
-                        .filter(p -> type == null || p.getType().toLowerCase().contains(type.toLowerCase()))
+                        .filter(p -> type == null || type.isEmpty() || p.getType().toLowerCase().matches(type.toLowerCase()))
                         .collect(Collectors.toList());
 
         double areaSum = sumDouble(filteredList, CountryData::getAreaKm2);
@@ -98,8 +98,8 @@ public class DataAnalysisController {
         model.addAttribute("mostCountries", mostCountries);
         model.addAttribute("largestRegion", regionGreatestArea);
         model.addAttribute("countryHighestLifeExp", countryHighestPop);
-        model.addAttribute("lowestGdpSubregion", subregionHighestAvGdpPerCap);
-        model.addAttribute("highestGdpSubregion", subregionLowestAvGdpPerCap);
+        model.addAttribute("lowestGdpSubregion", subregionLowestAvGdpPerCap);
+        model.addAttribute("highestGdpSubregion", subregionHighestAvGdpPerCap);
 
         return "dataInsights";
     }

@@ -22,12 +22,12 @@ public class CountryDataMapperServiceTest {
                     "subregionCSV",
                     "typeCSV",
                     1.0,
-                    2.0,
-                    3.0,
+                    2000.0,
+                    50.0,
                     4.0);
 
     final private CountryData entityData =
-            new CountryData(
+            new CountryData(1L,
                     "isoEntity",
                     "nameEntity",
                     "continentEntity",
@@ -35,8 +35,8 @@ public class CountryDataMapperServiceTest {
                     "subregionEntity",
                     "typeEntity",
                     0.1,
-                    0.2,
-                    0.3,
+                    1500.0,
+                    60.0,
                     0.4);
 
     @BeforeEach
