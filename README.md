@@ -122,11 +122,23 @@ Improved UI, by adding a button to download the CSV. Added a dockerfile, created
 ### 5:
 Fixed filter case sensitivity issue, where filters had to match exactly what was in the table to work. Now any case should filter. Noticed I had a question wrong (was getting highest pop instead of life exp).
 When investigating this, I noticed there was an obvious piece of incorrect data for South Africa's life expectancy. Guarded against this by returning null when parsing the data, for any life expectancy below 40 or above 90.
+Added a bar graph using Thymeleaf with Google Charts. 
 
 ### Current progress:
  - App now runs on http:localhost:8080. Now contains links to the questions from the task, and a graph of population density.
 
+### References
+https://www.wimdeblauwe.com/blog/2021/01/05/using-google-charts-with-thymeleaf/
 
+
+# Potential for improvement 
+ - The main area I would want to focus more on is the testing. While I have added unit tests across Repository, Service and Controller classes, the app is definitely not fully tested, and is not integration tested. It could use proper integration tests exercising more inter-service interactions, as well as setting up a mock data set for better testing of repository methods. 
+
+ - Splitting this project out into a microservice based structure with a more robust front end framework could improve it and make it more reuseable. Everything is quite tightly coupled currently. In a microservice structure, one service could handle all data requirements, a seperate service could handle CSV requirements, and the front end could be handled on a seperate service, with all 3 using RESTful api calls. 
+
+ - The UI is very basic. There could be a lot of improvement there, ideally through the use of better CSS or libraries for visualisations. The list of data should be paginated, or perhaps lazy loaded as the user scrolls.
+
+ - Currently, when the app runs the CSV file is automatically parsed and stored in the database, then automatically exported to temp location. This could be improved by allowing the user to provide the CSV for insertion into the database, and only exporting when the request is made. 
 
 
 
