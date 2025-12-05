@@ -1,21 +1,68 @@
 # Running the code
+## Docker
 The easiest way to run the application is using Docker. I have pushed an image to my Dockerhub. 
+(If you're unfamiliar with Docker you can get started [here](https://www.docker.com/get-started/))
 <br>
 With Docker running, pull the image down using:
 <br>
 <br>
-```docker pull ajp64/epi-task:latest```
+`docker pull ajp64/epi-task:latest`
 <br>
 <br>
 Once the image has downloaded, run with:
 <br>
 <br>
-```docker run -p 8080:8080 ajp64/epi-task```
+`docker run -p 8080:8080 ajp64/epi-task`
 <br>
 <br>
 Note this is using port 8080, so this must be available on your local computer.
 
 If successful, the application should be accessible through [http://localhost:8080](http://localhost:8080/)
+
+## Clone repo, and build locally
+Alternatively, you can build locally by cloning this repo. You will need installed:
+ - Java 17
+ - Maven (I'm using 3.9.6)
+
+Clone the repo either by copying the url from GitHub, and using the following commands:
+
+`git clone <repo_url>`  
+`cd <project_folder>`
+
+When in the project folder, install using Maven:
+
+`mvn clean install`
+
+If successful, you should be able to run the app using the following command, and access through [http://localhost:8080](http://localhost:8080/):
+
+```bash
+mvn spring-boot:run
+```
+
+# Walkthrough
+The app contains the worldData.csv file that you provided. When the app runs, this file is parsed and stored in a database, and a cleaned CSV is exported. 
+<br>
+<br>
+When you go to the route page of the app (http://localhost:8080, if running using instructions above) there is a table displaying all the data stored in the database. There are fields availble to filter the data, with running sums and averages of different columns which update depending on the filtered dataset. 
+<br>
+<br>
+There is a download CSV button, which will download a CSV of the data as stored in the database to your local drive.
+<br>
+<br>
+There are two button links, one which will take you to a page answering the questions that were provided in the task, and another which links to a bar graph of population density by region. 
+
+
+# Planning 
+ - For language and framework, I decided to use Java in Spring. This was mainly because I felt most comfortable using it to complete the task in the alloted time, and the Spring framerwork is well established with many useful libraries which I figured would help with this task.
+
+ - I initially thought about a microservice arrangement, using a front end and back end service. But I decided to keep it to a monorepo, as I figured that would be the simplest way to deliver the software. I wanted to create a docker image that was easy to download and run, and by keeping it to a single service in an image, I wouldn't have to spend time composing multiple containers.
+
+ - To keep it streamlined, rather than using a front end framework like React or Angular, I went with Thymeleaf, an HTML templating library that integrates with Spring. Although this might not be the best choice in a professional project, it provided what I needed to create a quick, effective UI that met the requirements.
+
+- Considering the database, I decided to use the h2 database in Spring as an in memory solution for persistence. This a quick and easy way to set up a relational database within the app. In a real world solution, ideally this app would use persistance so it doesn't need to be seeded each time the app runs, but for the purposes of this exercise I thought it was a nice and easy configurable solution.
+
+- I planned to used the typical Controller -> Service -> Repository model. Using a single Controller to handle the UI, which wired in a service that provided the information about the data required. Other services could handle the CSV requirements. 
+
 
 # Development log for project
 
@@ -70,7 +117,15 @@ Improved UI, by adding a button to download the CSV. Added a dockerfile, created
 ### Notes:
  - Testing ideally should be much more robust, i.e. integration testing.
  - Need to add bar graph to UI.
- - Filters in the UI should be relaxed, currently need exact matches by case to properly filter. 
+ - Filters in the UI should be relaxed, currently need exact matches by case to properly filter.
+
+### 5:
+Fixed filter case sensitivity issue, where filters had to match exactly what was in the table to work. Now any case should filter. Noticed I had a question wrong (was getting highest pop instead of life exp).
+When investigating this, I noticed there was an obvious piece of incorrect data for South Africa's life expectancy. Guarded against this by returning null when parsing the data, for any life expectancy below 40 or above 90.
+
+### Current progress:
+ - App now runs on http:localhost:8080. Now contains links to the questions from the task, and a graph of population density.
+
 
 
 
