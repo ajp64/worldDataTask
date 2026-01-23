@@ -40,7 +40,7 @@ mvn spring-boot:run
 ```
 
 # Walkthrough
-The app contains the worldData.csv file that you provided. When the app runs, this file is parsed and stored in a database, and a cleaned CSV is exported. 
+The app contains the worldData.csv file that was provided for the task. When the app runs, this file is parsed and stored in a database, and a cleaned CSV is exported. 
 <br>
 <br>
 When you go to the route page of the app (http://localhost:8080, if running using instructions above) there is a table displaying all the data stored in the database. There are fields availble to filter the data, with running sums and averages of different columns which update depending on the filtered dataset. 
