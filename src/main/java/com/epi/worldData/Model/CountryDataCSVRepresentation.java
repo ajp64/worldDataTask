@@ -7,7 +7,8 @@ import com.epi.worldData.util.DoubleParser;
 import lombok.*;
 
 // POJO which represents how the CSV data will get mapped to the database
-// For Doubles, uses DoubleConverter to return null when non-double values are provided in the dataset
+// For Doubles, uses DoubleParser to return null when non-double values are provided in the dataset
+// StringParser is used replace error values with null for strings.
 
 @Builder
 @Getter

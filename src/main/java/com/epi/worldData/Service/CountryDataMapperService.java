@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-// Mapper service, that uses the Builder and Getters from the data models to map between the CSV and database
+/*Mapper service, that uses the Builder and Getters from the data models to map between the CSV and database. Two private
+helper methods are used to remove values that don't align with the dataset (Populations and Life Expectancies outside the max and min)
+ */
 
 @Service
 public class CountryDataMapperService implements CSVMapper<CountryData, CountryDataCSVRepresentation> {

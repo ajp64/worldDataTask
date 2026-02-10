@@ -20,7 +20,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /*
-This controller uses the /countryData endpoint to return an HTML template, which is populated with data
+This controller uses different endpoints to return an HTML templates and prompt download of a CSV file. Templates are populated with data
 from the dataAnalysisService. Request parameters from the UI are used for filtering.
  */
 @Controller
