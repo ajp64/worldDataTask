@@ -6,13 +6,13 @@ The easiest way to run the application is using Docker. I have pushed an image t
 With Docker running, pull the image down using:
 <br>
 <br>
-`docker pull ajp64/epi-task:latest`
+`docker pull ajp64/worlddata-task:latest`
 <br>
 <br>
 Once the image has downloaded, run with:
 <br>
 <br>
-`docker run -p 8080:8080 ajp64/epi-task`
+`docker run -p 8080:8080 ajp64/worlddata-task`
 <br>
 <br>
 Note this is using port 8080, so this must be available on your local computer.
@@ -40,7 +40,7 @@ mvn spring-boot:run
 ```
 
 # Walkthrough
-The app contains the worldData.csv file that you provided. When the app runs, this file is parsed and stored in a database, and a cleaned CSV is exported. 
+The app contains the worldData.csv file that was provided for the task. When the app runs, this file is parsed and stored in a database, and a cleaned CSV is exported. 
 <br>
 <br>
 When you go to the route page of the app (http://localhost:8080, if running using instructions above) there is a table displaying all the data stored in the database. There are fields availble to filter the data, with running sums and averages of different columns which update depending on the filtered dataset. 
